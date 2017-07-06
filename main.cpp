@@ -3,20 +3,23 @@
 using namespace std;
 
 
+
 int cycleLength(int);// count cycle lengh
 int evenNumber(int);// function for even number
 int oddNumber(int);// function for odd number
 
 int main() 
 {
-	int i = 900, j = 1000;// Input numbers
+	int i = 0, j = 0;// Input numbers
+	
+	cin >> i >> j;
 
 	int n = 0, max_cycleLength = 0; // Counter for cycle length
 
-	for(i; i <= j; i++)
+	for(int k = i; k <= j; k++)
 	{
 
-		n = cycleLength(i);
+		n = cycleLength(k);
 		if (n > max_cycleLength)
 			max_cycleLength = n;
 	}
