@@ -1,30 +1,44 @@
+// @BEGIN_OF_SOURCE_CODE 
 #import <iostream>
 
 using namespace std;
 
-
-
 int cycleLength(int);// count cycle lengh
-int evenNumber(int);// function for even number
-int oddNumber(int);// function for odd number
 
 int main() 
 {
-	int i = 0, j = 0;// Input numbers
-	
-	cin >> i >> j;
-
-	int n = 0, max_cycleLength = 0; // Counter for cycle length
-
-	for(int k = i; k <= j; k++)
+    int i, j;// Input numbers
+	while (cin >> i >> j)	
 	{
+	
+		int n = 0, max_cycleLength = 0; // Counter for cycle length
 
-		n = cycleLength(k);
-		if (n > max_cycleLength)
-			max_cycleLength = n;
+		int temp_i = i;
+		int temp_j = j;
+		if(temp_i > temp_j)
+		{
+			int temp;
+			temp = temp_i;
+			temp_i = temp_j;
+			temp_j = temp;
+		}
+	
+		for(int k = temp_i; k <= temp_j; k++)
+		{
+
+			n = cycleLength(k);
+			if (n > max_cycleLength)
+				max_cycleLength = n;
+		}
+	
+		if(temp_j <= 1)
+		{
+			max_cycleLength = 1;
+		}
+
+	cout << i << " " << j << " " << max_cycleLength << endl;		
 	}
 	
-	cout << i << ' ' << j << ' ' << max_cycleLength << endl;
 	return 0;
 }
 
@@ -38,12 +52,12 @@ int cycleLength(int x)
 		if(x % 2)
 		{
 			// n is odd
-			x = oddNumber(x);
+			x = 3*x + 1;
 		}
 		else 
 		{
 			// n is even
-			x = evenNumber(x);
+			x = x / 2;
 		}
 
 		counter++;	
@@ -53,22 +67,4 @@ int cycleLength(int x)
 	return counter;
 }
 
-// for odd numbere, multiply by 3 and plus 1
-// and return that number
-int oddNumber(int x)
-{
-	int n = 0;
-	n = 3*x + 1;
-
-	return n;
-}
-
-// for even number, divided by 2
-// and return it
-int evenNumber(int x)
-{
-	int n = 0;
-	n = x / 2;
-
-	return n;
-}
+// @END_OF_SOURCE_CODE
