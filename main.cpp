@@ -8,35 +8,32 @@ int cycleLength(int);// count cycle lengh
 int main() 
 {
     int i, j;// Input numbers
-	while (cin >> i >> j)	
-	{
-	
-		int n = 0, max_cycleLength = 0; // Counter for cycle length
 
+	// Since input variable is specified, use scanf instead of cin(much fater)
+	while (scanf("%d %d", &i, &j) != EOF)
+	{	
+		int cycle_length; 
+		int max_cycle_length = 0;// must be initialized to zero, if it is random large value, it cannot compare with obtained cycle lenth later in this code 
+	
 		int temp_i = i;
 		int temp_j = j;
-		if(temp_i > temp_j)
-		{
-			int temp;
-			temp = temp_i;
-			temp_i = temp_j;
-			temp_j = temp;
-		}
-	
-		for(int k = temp_i; k <= temp_j; k++)
-		{
 
-			n = cycleLength(k);
-			if (n > max_cycleLength)
-				max_cycleLength = n;
-		}
-	
-		if(temp_j <= 1)
-		{
-			max_cycleLength = 1;
-		}
+		// if i is bigger than j, swap them
+		if(i > j)
+			swap(i,j);
 
-	cout << i << " " << j << " " << max_cycleLength << endl;		
+		// use unsigned int, since all integer must be bigger than 0
+		for(unsigned int k = i; k <= j; k++)
+		{
+			cycle_length = cycleLength(k);// get cycle length with certain value k
+	
+			// make max_cycle_length have max value
+			if (cycle_length > max_cycle_length)
+				max_cycle_length = cycle_length;
+		}
+		
+		//Again, since type are specified, use printf to be fast
+		printf("%d %d %d\n", temp_i, temp_j, max_cycle_length);		
 	}
 	
 	return 0;
@@ -50,16 +47,9 @@ int cycleLength(int x)
 	do
 	{
 		if(x % 2)
-		{
-			// n is odd
 			x = 3*x + 1;
-		}
-		else 
-		{
-			// n is even
+		else	
 			x = x / 2;
-		}
-
 		counter++;	
 
 	} while(x != 1);
