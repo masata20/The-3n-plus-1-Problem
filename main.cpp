@@ -45,7 +45,9 @@ int main()
 int cycleLength(unsigned int x)
 {
 	int counter = 1;
-	do
+
+	// don't use do while in case of i and j are the one
+	while(x != 1)
 	{
 		if(x % 2)
 			x = 3*x + 1;
@@ -53,8 +55,7 @@ int cycleLength(unsigned int x)
 			x = x / 2;
 		counter++;	
 
-	} while(x != 1);
-
+	}
 	return counter;
 }
 
