@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int cycleLength(int);// count cycle lengh
+int cycleLength(unsigned int);// count cycle lengh
 
 int main() 
 {
@@ -40,8 +40,9 @@ int main()
 }
 
 // count cycle length for given number with arugument
-// and return the cycle-length for int x
-int cycleLength(int x)
+// and return the cycle-length for unsigned int x
+// use unsigined integer
+int cycleLength(unsigned int x)
 {
 	int counter = 1;
 	do
